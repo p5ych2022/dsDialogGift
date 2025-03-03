@@ -1,0 +1,25 @@
+/* ImageScroll.css */
+
+.scroll-wrapper {
+    overflow: hidden;
+    width: 200%;
+}
+
+.scroll-container {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    align-items: center;
+  }
+  
+  .image-wrapper {
+    flex: 0 0 auto;
+  }
+  
+  .scroll-image {
+    /* 保持图片等比例显示，根据需要设置最大高度 */
+    max-height: 150px;
+    width: auto;
+    border-radius: 8px;
+    /* 如果需要默认缩放到 1.35 倍，可以在父容器中调整，但这里通过动画实现进入/离开效果 */
+  }

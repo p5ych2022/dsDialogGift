@@ -1,0 +1,15 @@
+
+
+  VITE v5.4.14  ready in 781 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+17:21:39 [vite] page reload src/App.tsx
+17:21:46 [vite] page reload src/App.tsx (x2)
+17:21:54 [vite] page reload src/App.tsx (x3)
+17:22:17 [vite] page reload src/components/HomePage.tsx
+17:22:22 [vite] page reload src/App.tsx
+17:22:24 [vite] page reload src/App.tsx (x2)
+npm install framer-motion react-icons
+ç^C

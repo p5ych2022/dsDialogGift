@@ -26,7 +26,7 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ onReturn }) => {
   }, [messages]);
 
   // 处理消息提交
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // 如果输入为空，则不处理
     if (!input.trim()) return;
@@ -35,12 +35,30 @@ const ChatDialog: React.FC<ChatDialogProps> = ({ onReturn }) => {
     setMessages(prev => [...prev, newMessage]);
     // 清空输入框
     setInput('');
+
     // 模拟后端响应，延时 1 秒返回
-    setTimeout(() => {
-      const botMessage: Message = { sender: 'bot', content: `收到: ${newMessage.content}` };
+    // setTimeout(() => {
+    //   const botMessage: Message = { sender: 'bot', content: `收到: ${newMessage.content}` };
+    //   setMessages(prev => [...prev, botMessage]);
+    // }, 1000);
+
+    // 调用后端 API 进行处理
+    try {
+      const response = await fetch('http://localhost:56001/process', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: newMessage.content }),
+      });
+      const data = await response.json();
+      const botMessage: Message = { sender: 'bot', content: data.content };
       setMessages(prev => [...prev, botMessage]);
-    }, 1000);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
+
 
   return (
     <div className="chat-dialog-container">
